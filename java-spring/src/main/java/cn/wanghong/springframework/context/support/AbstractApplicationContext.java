@@ -3,6 +3,7 @@ package cn.wanghong.springframework.context.support;
 import cn.wanghong.springframework.beans.BeansException;
 import cn.wanghong.springframework.beans.factory.ConfigurableListableBeanFactory;
 import cn.wanghong.springframework.beans.factory.config.BeanFactoryPostProcessor;
+import cn.wanghong.springframework.beans.factory.config.BeanPostProcessor;
 import cn.wanghong.springframework.context.ConfigurableApplicationContext;
 import cn.wanghong.springframework.core.io.DefaultResourceLoader;
 
@@ -35,7 +36,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader i
         beanFactory.preInstantiateSingletons();
     }
 
-    protected abstract  void refreshBeanFactory();
+    protected abstract  void refreshBeanFactory() throws BeansException;
 
     protected abstract ConfigurableListableBeanFactory getBeanFactory();
 
@@ -47,7 +48,10 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader i
     }
 
     private void registerBeanPostProcessors(ConfigurableListableBeanFactory beanFactory) {
-
+        Map<String, BeanPostProcessor> beanPostProcessorMap = beanFactory.getBeansOfType(BeanPostProcessor.class);
+        for (BeanPostProcessor beanPostProcessor : beanPostProcessorMap.values()) {
+            beanFactory.addBeanPostProcessor(beanPostProcessor);
+        }
     }
 
     @Override

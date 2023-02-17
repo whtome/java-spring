@@ -3,9 +3,15 @@ package cn.wanghong.springframework.beans.factory.support;
 import cn.wanghong.springframework.beans.BeansException;
 import cn.wanghong.springframework.beans.factory.BeanFactory;
 import cn.wanghong.springframework.beans.factory.config.BeanDefinition;
+import cn.wanghong.springframework.beans.factory.config.BeanPostProcessor;
+import cn.wanghong.springframework.beans.factory.config.ConfigurableBeanFactory;
 
-public abstract class AbstractBeanFactory extends DefaultSingletonBeanRegistry implements BeanFactory {
+import java.util.ArrayList;
+import java.util.List;
 
+public abstract class AbstractBeanFactory extends DefaultSingletonBeanRegistry implements ConfigurableBeanFactory {
+
+    private final List<BeanPostProcessor> beanPostProcessors = new ArrayList<BeanPostProcessor>();
 
     @Override
     public Object getBean(String name) {
@@ -35,4 +41,9 @@ public abstract class AbstractBeanFactory extends DefaultSingletonBeanRegistry i
 
     protected abstract Object createBean(String beanName, BeanDefinition beanDefinition, Object[] args) throws BeansException;
 
+    @Override
+    public void addBeanPostProcessor(BeanPostProcessor beanPostProcessor) {
+        beanPostProcessors.remove(beanPostProcessor);
+        beanPostProcessors.add(beanPostProcessor);
+    }
 }
