@@ -21,6 +21,7 @@ public class ClassPathXmlApplicationContext  extends AbstractXmlApplicationConte
 
     public ClassPathXmlApplicationContext(String[] configlocations) throws BeanException {
         this.configlocations = configlocations;
+        refresh();
     }
 
     @Override

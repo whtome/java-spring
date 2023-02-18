@@ -6,8 +6,10 @@ import cn.wanghong.springframework.beans.factory.PropertyValue;
 import cn.wanghong.springframework.beans.factory.PropertyValues;
 import cn.wanghong.springframework.beans.factory.config.AutowireCapableBeanFactory;
 import cn.wanghong.springframework.beans.factory.config.BeanDefinition;
+import cn.wanghong.springframework.beans.factory.config.BeanPostProcessor;
 import cn.wanghong.springframework.beans.factory.config.BeanReference;
 
+import javax.naming.event.ObjectChangeListener;
 import java.lang.reflect.Constructor;
 
 public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFactory implements AutowireCapableBeanFactory {
@@ -88,11 +90,27 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
 
     @Override
     public Object applyBeanPostProcessorsBeforeInitialization(Object existingBean, String beanName) throws BeansException {
-        return null;
+        Object result = existingBean;
+        for (BeanPostProcessor processor : getBeanPostProcessors()) {
+            Object current = processor.postProcessBeforeInitialization(result, beanName);
+            if (null == current) {
+                return result;
+            }
+            result = current;
+        }
+        return result;
     }
 
     @Override
     public Object applyBeanPostProcessorsAfterInitialization(Object existingBean, String beanName) throws BeansException {
-        return null;
+        Object result = existingBean;
+        for (BeanPostProcessor processor : getBeanPostProcessors()) {
+            Object current = processor.postProcessAfterInitialization(result, beanName);
+            if (null == current) {
+                return result;
+            }
+            result = current;
+        }
+        return result;
     }
 }
