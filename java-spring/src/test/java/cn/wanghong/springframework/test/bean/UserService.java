@@ -1,6 +1,9 @@
 package cn.wanghong.springframework.test.bean;
 
-public class UserService {
+import cn.wanghong.springframework.beans.factory.DisposableBean;
+import cn.wanghong.springframework.beans.factory.InitializingBean;
+
+public class UserService implements InitializingBean, DisposableBean {
 
     private String uid;
 
@@ -49,5 +52,15 @@ public class UserService {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+    @Override
+    public void destroy() throws Exception {
+        System.out.println("执行：UserService.destroy");
+    }
+
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        System.out.println("执行：UserService.afterPropertiseSet");
     }
 }
