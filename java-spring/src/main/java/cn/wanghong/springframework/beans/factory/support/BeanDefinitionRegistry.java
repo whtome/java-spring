@@ -3,6 +3,9 @@ package cn.wanghong.springframework.beans.factory.support;
 import cn.wanghong.springframework.beans.BeansException;
 import cn.wanghong.springframework.beans.factory.config.BeanDefinition;
 
+/**
+ * BeanDefinition 注册接口
+ */
 public interface BeanDefinitionRegistry {
 
     /**

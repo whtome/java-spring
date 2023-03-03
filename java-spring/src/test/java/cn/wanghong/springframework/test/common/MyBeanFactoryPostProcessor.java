@@ -2,8 +2,8 @@ package cn.wanghong.springframework.test.common;
 
 import cn.wanghong.springframework.beans.BeansException;
 import cn.wanghong.springframework.beans.factory.ConfigurableListableBeanFactory;
-import cn.wanghong.springframework.beans.factory.PropertyValue;
-import cn.wanghong.springframework.beans.factory.PropertyValues;
+import cn.wanghong.springframework.beans.PropertyValue;
+import cn.wanghong.springframework.beans.PropertyValues;
 import cn.wanghong.springframework.beans.factory.config.BeanDefinition;
 import cn.wanghong.springframework.beans.factory.config.BeanFactoryPostProcessor;
 

@@ -6,7 +6,7 @@ import cn.hutool.core.bean.BeanException;
  * @Author: wanghong
  * @date: 2023/2/16  15:00
  * @Version: 1.0
- * @Description:
+ * @Description: xml文件应该上下文
  */
 public class ClassPathXmlApplicationContext  extends AbstractXmlApplicationContext{
 

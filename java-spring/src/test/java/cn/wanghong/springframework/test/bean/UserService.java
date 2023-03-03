@@ -1,9 +1,20 @@
 package cn.wanghong.springframework.test.bean;
 
+import cn.hutool.core.bean.BeanException;
+import cn.wanghong.springframework.beans.BeansException;
+import cn.wanghong.springframework.beans.factory.BeanFactory;
 import cn.wanghong.springframework.beans.factory.DisposableBean;
 import cn.wanghong.springframework.beans.factory.InitializingBean;
+import cn.wanghong.springframework.beans.factory.support.BeanClassLoaderAware;
+import cn.wanghong.springframework.beans.factory.support.BeanFactoryAware;
+import cn.wanghong.springframework.beans.factory.support.BeanNameAware;
+import cn.wanghong.springframework.context.ApplicationContext;
+import cn.wanghong.springframework.context.ApplicationContextAware;
 
-public class UserService implements InitializingBean, DisposableBean {
+public class UserService implements InitializingBean, DisposableBean, BeanFactoryAware, BeanNameAware, BeanClassLoaderAware, ApplicationContextAware {
+
+    private ApplicationContext applicationContext;
+    private BeanFactory beanFactory;
 
     private String uid;
 
@@ -62,5 +73,33 @@ public class UserService implements InitializingBean, DisposableBean {
     @Override
     public void afterPropertiesSet() throws Exception {
         System.out.println("执行：UserService.afterPropertiseSet");
+    }
+
+    @Override
+    public void setBeanClassLoader(ClassLoader classLoader) throws BeanException {
+        System.out.println("ClassLoader: " + classLoader);
+    }
+
+    @Override
+    public void setBeanName(String name) {
+        System.out.println("Bean name: " + name);
+    }
+
+    @Override
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        this.applicationContext = applicationContext;
+    }
+
+    @Override
+    public void setBeanFactory(BeanFactory beanFactory) throws BeansException {
+        this.beanFactory = beanFactory;
+    }
+
+    public ApplicationContext getApplicationContext() {
+        return applicationContext;
+    }
+
+    public BeanFactory getBeanFactory() {
+        return beanFactory;
     }
 }

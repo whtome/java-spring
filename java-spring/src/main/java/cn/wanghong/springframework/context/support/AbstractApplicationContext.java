@@ -13,7 +13,7 @@ import java.util.Map;
  * @Author: wanghong
  * @date: 2023/2/16  14:59
  * @Version: 1.0
- * @Description:
+ * @Description: 抽象应用上下文
  */
 public abstract class AbstractApplicationContext extends DefaultResourceLoader implements ConfigurableApplicationContext {
 
@@ -26,13 +26,16 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader i
         //2.获取BeanFactory
         ConfigurableListableBeanFactory beanFactory = getBeanFactory();
 
-        //3.在Bean实例化之前，执行BeanFactoryPostProcessor()
+        //3. 添加ApplicationContextAwareProcessor，让继承ApplicationContextAware的Bean对象都能感知所属的 ApplicationContext
+        beanFactory.addBeanPostProcessor(new ApplicationContextAwareProcessor(this));
+
+        //4.在Bean实例化之前，执行BeanFactoryPostProcessor()
         invokeBeanFactoryPostProcessors(beanFactory);
 
-        //4.BeanPostProcessor提前于其他Bean对象实例化之前执行注册操作
+        //5.BeanPostProcessor提前于其他Bean对象实例化之前执行注册操作
         registerBeanPostProcessors(beanFactory);
 
-        //5.提前实例化单例Bean对象
+        //6.提前实例化单例Bean对象
         beanFactory.preInstantiateSingletons();
     }
 

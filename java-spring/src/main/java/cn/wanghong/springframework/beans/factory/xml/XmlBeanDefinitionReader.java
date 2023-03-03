@@ -3,7 +3,7 @@ package cn.wanghong.springframework.beans.factory.xml;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.core.util.XmlUtil;
 import cn.wanghong.springframework.beans.BeansException;
-import cn.wanghong.springframework.beans.factory.PropertyValue;
+import cn.wanghong.springframework.beans.PropertyValue;
 import cn.wanghong.springframework.beans.factory.config.BeanDefinition;
 import cn.wanghong.springframework.beans.factory.config.BeanReference;
 import cn.wanghong.springframework.beans.factory.support.AbstractBeanDefinitionReader;

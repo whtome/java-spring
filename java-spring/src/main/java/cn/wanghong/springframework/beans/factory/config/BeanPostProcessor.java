@@ -7,7 +7,7 @@ import cn.wanghong.springframework.beans.BeansException;
  * @Author: wanghong
  * @date: 2023/2/16  14:56
  * @Version: 1.0
- * @Description:
+ * @Description: 用于修改新实例化 Bean 对象的前后置处理
  */
 public interface BeanPostProcessor {
 

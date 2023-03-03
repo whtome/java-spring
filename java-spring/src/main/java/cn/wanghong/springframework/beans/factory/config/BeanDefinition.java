@@ -1,7 +1,7 @@
 package cn.wanghong.springframework.beans.factory.config;
 
 
-import cn.wanghong.springframework.beans.factory.PropertyValues;
+import cn.wanghong.springframework.beans.PropertyValues;
 
 public class BeanDefinition {
 

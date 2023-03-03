@@ -1,4 +1,6 @@
-package cn.wanghong.springframework.beans.factory;
+package cn.wanghong.springframework.beans;
+
+import cn.wanghong.springframework.beans.PropertyValue;
 
 import java.util.ArrayList;
 import java.util.List;

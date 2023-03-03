@@ -4,6 +4,9 @@ import cn.wanghong.springframework.beans.BeansException;
 import cn.wanghong.springframework.core.io.Resource;
 import cn.wanghong.springframework.core.io.ResourceLoader;
 
+/**
+ * BeanDefinition 读取接口
+ */
 public interface BeanDefinitionReader {
 
     BeanDefinitionRegistry getRegistry();

@@ -7,7 +7,7 @@ import cn.wanghong.springframework.beans.factory.ConfigurableListableBeanFactory
  * @Author: wanghong
  * @date: 2023/2/16  14:56
  * @Version: 1.0
- * @Description:
+ * @Description: 修改BeanDefinition
  */
 public interface BeanFactoryPostProcessor {
 

@@ -1,4 +1,4 @@
-package cn.wanghong.springframework.beans.factory;
+package cn.wanghong.springframework.beans;
 
 public class PropertyValue {
 

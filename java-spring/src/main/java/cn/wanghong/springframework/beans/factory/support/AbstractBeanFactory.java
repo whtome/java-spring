@@ -5,13 +5,20 @@ import cn.wanghong.springframework.beans.factory.BeanFactory;
 import cn.wanghong.springframework.beans.factory.config.BeanDefinition;
 import cn.wanghong.springframework.beans.factory.config.BeanPostProcessor;
 import cn.wanghong.springframework.beans.factory.config.ConfigurableBeanFactory;
+import cn.wanghong.springframework.utils.ClassUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**
+ * BeanDefinition注册表接口
+ */
 public abstract class AbstractBeanFactory extends DefaultSingletonBeanRegistry implements ConfigurableBeanFactory {
 
     private final List<BeanPostProcessor> beanPostProcessors = new ArrayList<BeanPostProcessor>();
+
+    private ClassLoader beanClassLoader = ClassUtils.getDefaultClassLoader();
 
     @Override
     public Object getBean(String name) {
@@ -48,5 +55,9 @@ public abstract class AbstractBeanFactory extends DefaultSingletonBeanRegistry i
     }
     public List<BeanPostProcessor> getBeanPostProcessors() {
         return this.beanPostProcessors;
+    }
+
+    public ClassLoader getBeanClassLoader() {
+        return this.beanClassLoader;
     }
 }

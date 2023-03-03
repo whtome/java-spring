@@ -2,16 +2,11 @@ package cn.wanghong.springframework.test;
 
 
 import cn.hutool.core.io.IoUtil;
-import cn.wanghong.springframework.beans.factory.PropertyValue;
-import cn.wanghong.springframework.beans.factory.PropertyValues;
-import cn.wanghong.springframework.beans.factory.config.BeanDefinition;
-import cn.wanghong.springframework.beans.factory.config.BeanReference;
 import cn.wanghong.springframework.beans.factory.support.DefaultListableBeanFactory;
 import cn.wanghong.springframework.beans.factory.xml.XmlBeanDefinitionReader;
 import cn.wanghong.springframework.context.support.ClassPathXmlApplicationContext;
 import cn.wanghong.springframework.core.io.DefaultResourceLoader;
 import cn.wanghong.springframework.core.io.Resource;
-import cn.wanghong.springframework.test.bean.UserDao;
 import cn.wanghong.springframework.test.bean.UserService;
 import cn.wanghong.springframework.test.common.MyBeanFactoryPostProcessor;
 import cn.wanghong.springframework.test.common.MyBeanPostProcessor;
@@ -20,8 +15,6 @@ import org.junit.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 
 
 public class ApiTest {
@@ -59,7 +52,9 @@ public class ApiTest {
         //2. 获取Bean对象调用方法
         UserService userService = applicationContext.getBean("userService", UserService.class);
         String result = userService.queryUserInfo();
-        System.out.println(result);
+        System.out.println("测试结果： " + result);
+        System.out.println("ApplicationContextAwre: " + userService.getApplicationContext());
+        System.out.println("BeanFactoryAware: " + userService.getBeanFactory());
     }
 
 

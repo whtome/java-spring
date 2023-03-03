@@ -1,5 +1,9 @@
 package cn.wanghong.springframework.beans.factory.config;
 
+
+/**
+ * Bean 的引用
+ */
 public class BeanReference {
     private final String beanName;
 
