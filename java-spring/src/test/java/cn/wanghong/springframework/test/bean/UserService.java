@@ -22,7 +22,7 @@ public class UserService implements InitializingBean, DisposableBean, BeanFactor
 
     private String location;
 
-    private UserDao userDao;
+    private IUserDao  userDao;
 
 //    public UserService(String uid, UserDao userDao) {
 //        this.uid = uid;
@@ -41,11 +41,11 @@ public class UserService implements InitializingBean, DisposableBean, BeanFactor
         this.uid = uid;
     }
 
-    public UserDao getUserDao() {
+    public IUserDao getUserDao() {
         return userDao;
     }
 
-    public void setUserDao(UserDao userDao) {
+    public void setUserDao(IUserDao userDao) {
         this.userDao = userDao;
     }
 
